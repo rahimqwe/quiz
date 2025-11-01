@@ -1,10 +1,9 @@
-import { defineConfig, Plugin } from "vite";
+// vite.config.ts — клиентская сборка + dev-сервер c Express только локально
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { createServer } from "./server";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ command }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -15,8 +14,13 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/spa",
+    emptyOutDir: true,
   },
-  plugins: [react(), expressPlugin()],
+  plugins: [
+    react(),
+    // Подключаем express-мидлвар только в режиме `vite serve`
+    ...(command === "serve" ? [expressDevPlugin()] : []),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
@@ -25,14 +29,17 @@ export default defineConfig(({ mode }) => ({
   },
 }));
 
-function expressPlugin(): Plugin {
+function expressDevPlugin(): Plugin {
   return {
-    name: "express-plugin",
-    apply: "serve", // Only apply during development (serve mode)
-    configureServer(server) {
+    name: "express-dev-plugin",
+    apply: "serve",
+    async configureServer(server) {
+      // ВАЖНО: динамический импорт, чтобы не резолвился при build
+      const { createServer } = await import("./server/index.ts").catch(async () =>
+        // если входная точка у тебя `server/index.ts` нет — пробуем просто `./server`
+        await import("./server")
+      );
       const app = createServer();
-
-      // Add Express app as middleware to Vite dev server
       server.middlewares.use(app);
     },
   };
