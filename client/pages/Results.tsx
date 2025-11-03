@@ -107,21 +107,17 @@ export const ResultsPage: React.FC = () => {
   const baseUrl = "https://www.startminded.com/action-starter-checkout";
 
   let emailParam = "";
-  if (typeof window !== "undefined") {
-    try {
-      const storedEmail = localStorage.getItem("quizEmail");
-      if (storedEmail) {
-        const params = new URLSearchParams();
-        params.set("email", storedEmail);
-        emailParam = `?${params.toString()}`;
-      }
-    } catch {
-      // ignore
+  try {
+    const storedEmail = localStorage.getItem("quizEmail");
+    console.log("ResultsPage quizEmail:", storedEmail);
+    if (storedEmail) {
+      const params = new URLSearchParams();
+      params.set("email", storedEmail);
+      emailParam = `?${params.toString()}`;
     }
-  }
+  } catch {}
 
-  const exactUrl = `${baseUrl}${emailParam}`;
-  window.location.href = exactUrl;
+  window.location.href = `${baseUrl}${emailParam}`;
 };
 
   const primaryCTAText = `Get My 5-Minute Start → $${launchPrice}`;
@@ -205,7 +201,7 @@ export const ResultsPage: React.FC = () => {
               {/* <ArrowRight className="h-5 w-5" /> */}
             </button>
             <p className="text-center text-sm text-muted-foreground">
-              Instant PDF • Works in 2–5 minutes • "NO START" refund in 24h
+              Instant PDF • Works in 2–5 minutes
             </p>
           </div>
         </div>
