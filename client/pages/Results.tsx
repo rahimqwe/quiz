@@ -96,19 +96,33 @@ export const ResultsPage: React.FC = () => {
   const deadline = getFormattedDeadline();
 
   const handleCTA = (position: string) => {
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        event: "cta_click",
-        position: position,
-        price: launchPrice,
-      });
-    }
-   const exactUrl = "https://www.startminded.com/action-starter-checkout";
-  // (Замените 'https://www.vashsite.com' на ваш реальный домен)
+  if (typeof window !== "undefined" && (window as any).dataLayer) {
+    (window as any).dataLayer.push({
+      event: "cta_click",
+      position,
+      price: launchPrice,
+    });
+  }
 
-  // 2. Перенаправляем пользователя в той же вкладке
-  window.location.href = exactUrl;;
-  };
+  const baseUrl = "https://www.startminded.com/action-starter-checkout";
+
+  let emailParam = "";
+  if (typeof window !== "undefined") {
+    try {
+      const storedEmail = localStorage.getItem("quizEmail");
+      if (storedEmail) {
+        const params = new URLSearchParams();
+        params.set("email", storedEmail);
+        emailParam = `?${params.toString()}`;
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  const exactUrl = `${baseUrl}${emailParam}`;
+  window.location.href = exactUrl;
+};
 
   const primaryCTAText = `Get My 5-Minute Start → $${launchPrice}`;
   const primaryCTATextNoPrice = "Get My 5-Minute Start";

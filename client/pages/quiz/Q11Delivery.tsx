@@ -19,14 +19,32 @@ export const Q11DeliveryScreen: React.FC = () => {
     }
     // Listen for postMessage from the systeme.io iframe
     function handleMessage(event: MessageEvent) {
-      console.log('[Systeme.io form] postMessage event:', event);
-      // Accept messages only from systeme.io
-      if (event.origin.includes("systeme.io") || event.origin.includes("startminded.com")) {
-        if (typeof event.data === "object" && event.data?.type === 'funnel_step_21222180_form_submit_success') {
-          navigate("/loading");
+  console.log("[Systeme.io form] postMessage event:", event);
+
+  if (event.origin.includes("systeme.io") || event.origin.includes("startminded.com")) {
+    if (typeof event.data === "object" && event.data?.type === "funnel_step_21222180_form_submit_success") {
+      // Try to extract email from the payload
+      // (these paths are defensive; one of them should match what Systeme sends)
+      const data: any = event.data;
+      const email =
+        data?.email ||
+        data?.payload?.email ||
+        data?.data?.email ||
+        data?.contact?.email ||
+        null;
+
+      if (email) {
+        try {
+          localStorage.setItem("quizEmail", String(email));
+        } catch {
+          // ignore storage errors
         }
       }
+
+      navigate("/loading");
     }
+  }
+}
     window.addEventListener("message", handleMessage);
     return () => {
       script.remove();
