@@ -8,6 +8,14 @@ export const Q11DeliveryScreen: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 11,
+        question_id: "q11",
+      });
+    }
     // Dynamically inject the systeme.io form script
     const script = document.createElement("script");
     script.id = "form-script-tag-21222180";
@@ -54,6 +62,7 @@ export const Q11DeliveryScreen: React.FC = () => {
       script.remove();
       window.removeEventListener("message", handleMessage);
     };
+    
   }, [navigate]);
 
   return (

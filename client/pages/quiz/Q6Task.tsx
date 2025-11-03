@@ -7,6 +7,14 @@ export const Q6TaskScreen: React.FC = () => {
   useEffect(() => {
     const img = new Image();
     img.src = second;
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 6,
+        question_id: "q6",
+      });
+    }
   }, []);
   return (
     <QuizScreenTemplate

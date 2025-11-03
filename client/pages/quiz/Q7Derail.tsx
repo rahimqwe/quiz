@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
 
 export const Q7DerailScreen: React.FC = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 7,
+        question_id: "q7",
+      });
+    }
+  }, []);
   return (
     <QuizScreenTemplate
       screenNumber={7}

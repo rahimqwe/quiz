@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
 
 export const Q8TimeScreen: React.FC = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 8,
+        question_id: "q8",
+      });
+    }
+  }, []);
   return (
     <QuizScreenTemplate
       screenNumber={8}

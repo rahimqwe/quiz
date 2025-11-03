@@ -7,6 +7,14 @@ export const Q3ClarityScreen: React.FC = () => {
   useEffect(() => {
     const img = new Image();
     img.src = first;
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 3,
+        question_id: "q3",
+      });
+    }
   }, []);
   return (
     <QuizScreenTemplate

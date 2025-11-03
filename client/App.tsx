@@ -26,7 +26,7 @@ import { Q11DeliveryScreen } from "./pages/quiz/Q11Delivery";
 import { Q12TaskScreen } from "./pages/quiz/Q12Task";
 import { LoadingScreen } from "./pages/Loading";
 import { ResultsPage } from "./pages/Results";
-
+import { AnalyticsListener } from "./AnalyticsListener";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -36,6 +36,7 @@ const App = () => (
       <Sonner />
       <QuizProvider>
         <BrowserRouter>
+        <AnalyticsListener />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/quiz/1" element={<Q1PatternScreen />} />

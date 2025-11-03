@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "@/components/quiz/ProgressBar";
 import { INTERSTITIALS } from "@/content/interstitials";
@@ -7,6 +7,16 @@ import { ArrowLeft } from "lucide-react";
 import afterQ3Img from "/public/first.webp";
 export const InterstitialBinaryScreen: React.FC = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+      if (typeof window !== "undefined") {
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({
+          event: "quiz_step_view",
+          step: 4,
+          question_id: "q4",
+        });
+      }
+    }, []);
   return (
     <div className="min-h-screen bg-background px-4 py-8 md:py-12">
       <div className="w-full max-w-2xl mx-auto space-y-8">

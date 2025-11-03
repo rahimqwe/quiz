@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
 
 export const Q9ToolsScreen: React.FC = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "quiz_step_view",
+        step: 9,
+        question_id: "q9",
+      });
+    }
+  }, []);
   const navigate = useNavigate();
   return (
     <QuizScreenTemplate
