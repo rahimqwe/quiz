@@ -23,39 +23,75 @@ import testi3 from "/public/testi3.webp";
 export const ResultsPage: React.FC = () => {
   const navigate = useNavigate();
   const { outcome, answers } = useQuiz();
+
+  // local copies that can be restored from localStorage
+  const [hydratedOutcome, setHydratedOutcome] = useState(outcome || null);
+  const [hydratedAnswers, setHydratedAnswers] = useState(answers || null as any);
   const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
-    if (!outcome) {
-      navigate("/");
-      return;
+    // 1. If we have a fresh outcome from context, store it
+    if (outcome && answers) {
+      const payload = { outcome, answers };
+      try {
+        localStorage.setItem("lastResult", JSON.stringify(payload));
+      } catch {
+        // ignore storage errors
+      }
+
+      // fire analytics
+      if (typeof window !== "undefined" && (window as any).dataLayer) {
+        (window as any).dataLayer.push({ event: "results_view" });
+      }
     }
 
-    // Fire analytics event
-    if (typeof window !== "undefined" && (window as any).dataLayer) {
-      (window as any).dataLayer.push({ event: "results_view" });
+    // 2. If we DON'T have an outcome from context, try to hydrate from localStorage
+    if (!outcome || !answers) {
+      try {
+        const stored = localStorage.getItem("lastResult");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (parsed?.outcome && parsed?.answers) {
+            setHydratedOutcome(parsed.outcome);
+            setHydratedAnswers(parsed.answers);
+            // don't navigate away – we can render from hydrated data
+          } else {
+            navigate("/");
+            return;
+          }
+        } else {
+          navigate("/");
+          return;
+        }
+      } catch {
+        navigate("/");
+        return;
+      }
     }
 
+    // 3. Scroll listener (unchanged)
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [outcome, navigate]);
+  }, [outcome, answers, navigate]);
 
-  if (!outcome) {
+
+  const effectiveOutcome = hydratedOutcome || outcome;
+  const effectiveAnswers = hydratedAnswers || answers;
+
+  if (!effectiveOutcome || !effectiveAnswers) {
     return null;
-  }
-
+  } 
   const clarityScore = calculateClarityScore(
-    answers.q3_clarity,
-    answers.q2_hover_time
+    effectiveAnswers.q3_clarity,
+    effectiveAnswers.q2_hover_time
   );
-  const topObstacle = getTopObstacle(outcome, answers);
-  const startType = getStartTypeLabel(outcome);
-  const emotion = getEmotionLabel(answers.q4_emotion);
-  const hoverTime = answers.q2_hover_time;
+  const topObstacle = getTopObstacle(effectiveOutcome, effectiveAnswers);
+  const startType = getStartTypeLabel(effectiveOutcome);
+  const emotion = getEmotionLabel(effectiveAnswers.q4_emotion);
+  const hoverTime = effectiveAnswers.q2_hover_time;
   const { launch: launchPrice, future: futurePrice } = getPrices();
   const deadline = getFormattedDeadline();
 
