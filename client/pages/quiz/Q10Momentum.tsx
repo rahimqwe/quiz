@@ -7,7 +7,7 @@ export const Q10MomentumScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 10,
+        step: 12,
         question_id: "q10",
       });
     }

@@ -13,7 +13,7 @@ export const InterstitialBinaryScreen: React.FC = () => {
         (window as any).dataLayer.push({
           event: "quiz_step_view",
           step: 4,
-          question_id: "q4",
+          question_id: "intrerstitial1",
         });
       }
     }, []);

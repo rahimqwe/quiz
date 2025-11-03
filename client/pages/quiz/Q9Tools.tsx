@@ -8,7 +8,7 @@ export const Q9ToolsScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 9,
+        step: 11,
         question_id: "q9",
       });
     }

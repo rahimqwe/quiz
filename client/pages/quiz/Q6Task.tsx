@@ -11,7 +11,7 @@ export const Q6TaskScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 6,
+        step: 7,
         question_id: "q6",
       });
     }

@@ -7,7 +7,7 @@ export const Q8TimeScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 8,
+        step: 10,
         question_id: "q8",
       });
     }

@@ -9,7 +9,7 @@ export const Q5Pattern2Screen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 5,
+        step: 6,
         question_id: "q5",
       });
     }

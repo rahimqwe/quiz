@@ -7,7 +7,7 @@ export const Q7DerailScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 7,
+        step: 9,
         question_id: "q7",
       });
     }
