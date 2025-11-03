@@ -14,7 +14,7 @@ export const Q7DerailScreen: React.FC = () => {
         "Starting feels \"painful\" in the body",
       ]}
       answerId="q7_derail"
-      totalScreens={12}
+      totalScreens={11}
     />
   );
 };

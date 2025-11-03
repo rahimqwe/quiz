@@ -8,7 +8,7 @@ export const Q4EmotionScreen: React.FC = () => {
       question="What shows up first?"
       options={["Dread", "Guilt", "Anxiety", "Boredom"]}
       answerId="q4_emotion"
-      totalScreens={12}
+      totalScreens={11}
     />
   );
 };

@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
 
 export const Q9ToolsScreen: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <QuizScreenTemplate
       screenNumber={9}
@@ -11,9 +13,11 @@ export const Q9ToolsScreen: React.FC = () => {
         "Pomodoro/apps",
         "Courses/coaches",
         "Everything above",
+        "Nothing yet",
       ]}
       answerId="q9_tools"
-      totalScreens={12}
+      totalScreens={11}
+      onNavigateNext={() => navigate("/quiz/10")}
     />
   );
 };

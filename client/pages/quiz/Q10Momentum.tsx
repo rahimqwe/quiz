@@ -8,7 +8,7 @@ export const Q10MomentumScreen: React.FC = () => {
       question="Once you start, what usually happens?"
       options={["I stop quickly", "I keep going", "It depends"]}
       answerId="q10_after_start"
-      totalScreens={12}
+      totalScreens={11}
     />
   );
 };

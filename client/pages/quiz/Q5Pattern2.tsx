@@ -4,11 +4,6 @@ import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
 
 export const Q5Pattern2Screen: React.FC = () => {
   const navigate = useNavigate();
-
-  const handleNavigateNext = () => {
-    navigate("/quiz/interstitial");
-  };
-
   return (
     <QuizScreenTemplate
       screenNumber={5}
@@ -20,8 +15,8 @@ export const Q5Pattern2Screen: React.FC = () => {
         "Start tiny bursts, fizzle fast",
       ]}
       answerId="q5_pattern2"
-      totalScreens={12}
-      onNavigateNext={handleNavigateNext}
+      totalScreens={11}
+      onNavigateNext={() => navigate("/quiz/6")}
     />
   );
 };

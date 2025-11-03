@@ -32,7 +32,7 @@ export const Q12TaskScreen: React.FC = () => {
     <div className="min-h-screen bg-background px-4 py-8 md:py-12">
       <div className="w-full max-w-2xl mx-auto space-y-8">
         {/* Progress Bar */}
-        <ProgressBar current={12} total={12} />
+        <ProgressBar current={11} total={11} />
 
         {/* Main Content */}
         <div className="space-y-8">

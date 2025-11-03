@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.cache/
+server/
+netlify/
+.env*
+*.log
+.DS_Store

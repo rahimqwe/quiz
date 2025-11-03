@@ -15,6 +15,8 @@ import { Q3ClarityScreen } from "./pages/quiz/Q3Clarity";
 import { Q4EmotionScreen } from "./pages/quiz/Q4Emotion";
 import { Q5Pattern2Screen } from "./pages/quiz/Q5Pattern2";
 import { InterstitialScreen } from "./pages/quiz/Interstitial";
+import { InterstitialBinaryScreen } from "./pages/quiz/InterstitialBinary";
+import { InterstitialObjectionsScreen } from "./pages/quiz/InterstitialObjections";
 import { Q6TaskScreen } from "./pages/quiz/Q6Task";
 import { Q7DerailScreen } from "./pages/quiz/Q7Derail";
 import { Q8TimeScreen } from "./pages/quiz/Q8Time";
@@ -42,6 +44,8 @@ const App = () => (
             <Route path="/quiz/4" element={<Q4EmotionScreen />} />
             <Route path="/quiz/5" element={<Q5Pattern2Screen />} />
             <Route path="/quiz/interstitial" element={<InterstitialScreen />} />
+            <Route path="/quiz/interstitial-binary" element={<InterstitialBinaryScreen />} />
+            <Route path="/quiz/interstitial-objections" element={<InterstitialObjectionsScreen />} />
             <Route path="/quiz/6" element={<Q6TaskScreen />} />
             <Route path="/quiz/7" element={<Q7DerailScreen />} />
             <Route path="/quiz/8" element={<Q8TimeScreen />} />

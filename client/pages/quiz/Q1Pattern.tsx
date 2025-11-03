@@ -13,7 +13,7 @@ export const Q1PatternScreen: React.FC = () => {
         "I overthink the \"right\" first step",
       ]}
       answerId="q1_pattern"
-      totalScreens={12}
+      totalScreens={11}
     />
   );
 };

@@ -1,5 +1,5 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -97,6 +97,9 @@
     --sidebar-ring: 204 61% 83%;
   }
 }
+.eLxzBA{
+  display: none
+}
 
 @layer base {
   * {
@@ -118,3 +121,4 @@
     white-space: pre;
   }
 }
+

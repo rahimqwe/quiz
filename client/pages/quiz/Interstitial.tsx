@@ -1,3 +1,5 @@
+// This file is now deprecated. See InterstitialA.tsx and InterstitialB.tsx for new interstitials.
+
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuiz } from "@/hooks/use-quiz";

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { QuizScreenTemplate } from "@/components/quiz/QuizScreenTemplate";
-
+import second from "/second.webp";
 export const Q6TaskScreen: React.FC = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const img = new Image();
+    img.src = second;
+  }, []);
   return (
     <QuizScreenTemplate
       screenNumber={6}
@@ -14,7 +20,8 @@ export const Q6TaskScreen: React.FC = () => {
         "Studying/learning",
       ]}
       answerId="q6_task"
-      totalScreens={12}
+      totalScreens={11}
+      onNavigateNext={() => navigate("/quiz/interstitial-objections")}
     />
   );
 };

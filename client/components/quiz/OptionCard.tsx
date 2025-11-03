@@ -29,10 +29,10 @@ export const OptionCard: React.FC<OptionCardProps> = ({
         "relative w-full text-left px-6 py-4 rounded-lg border-2 transition-all duration-200",
         "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
         isSelected
-          ? "border-secondary bg-secondary/10 text-foreground"
+          ? "border-secondary bg-secondary/10 text-[#435065]"
           : isHovered
-            ? "border-primary bg-primary/5 text-foreground"
-            : "border-border bg-card text-foreground hover:border-primary/50",
+            ? "border-primary bg-primary/5 text-[#435065]"
+            : "border-border bg-card text-[#435065] hover:border-primary/50",
         disabled && "opacity-50 cursor-not-allowed"
       )}
       style={{
