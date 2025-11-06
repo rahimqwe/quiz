@@ -73,7 +73,7 @@ export const QuizScreenTemplate: React.FC<QuizScreenTemplateProps> = ({
     setTimeout(() => {
       if (onNavigateNext) {
         onNavigateNext();
-      } else if (screenNumber < 12) {
+      } else if (screenNumber < 6) {
         navigate(`/quiz/${screenNumber + 1}`);
       } else {
         navigate("/loading");

@@ -35,11 +35,11 @@ export const IntroScreen: React.FC = () => {
         {/* Heading */}
         <div className="space-y-4">
           <h1 className="text-3xl font-bold text-foreground leading-tight">
-            Why can't you start tasks - even when you want to?
+           What’s Actually Keeping You Stuck?
           </h1>
 
           <p className="text-base text-muted-foreground leading-relaxed">
-            Take the 2-minute Start Type Quiz to uncover your exact initiation pattern and what actually flips your ADHD brain ON.
+            Discover your ADHD overthinking pattern — and the fastest way to break the freeze
           </p>
         </div>
 

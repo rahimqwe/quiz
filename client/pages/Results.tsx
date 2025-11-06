@@ -11,19 +11,24 @@ import {
 } from "@/components/results/ResultsHelpers";
 import {
   ArrowRight,
+  Brain,
   Zap,
   CheckCircle2,
-  Workflow,
   Clock,
   AlertCircle,
+  ChevronDown,
+  Lightbulb,
+  Shield,
+  Flame,
 } from "lucide-react";
 import testi1 from "/public/testi1.webp";
 import testi2 from "/public/testi2.webp";
 import testi3 from "/public/testi3.webp";
+import { getOutcomeContent } from '@/components/results/OutcomeContent.tsx';
 export const ResultsPage: React.FC = () => {
   const navigate = useNavigate();
   const { outcome, answers } = useQuiz();
-
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   // local copies that can be restored from localStorage
   const [hydratedOutcome, setHydratedOutcome] = useState(outcome || null);
   const [hydratedAnswers, setHydratedAnswers] = useState(answers || null as any);
@@ -120,424 +125,548 @@ export const ResultsPage: React.FC = () => {
   window.location.href = `${baseUrl}${emailParam}`;
 };
 
-  const primaryCTAText = `Get My 5-Minute Start → $${launchPrice}`;
+  const primaryCTAText = `Get My 5-Minute Start - $${launchPrice}`;
   const primaryCTATextNoPrice = "Get My 5-Minute Start";
   const secondaryCTAText = "Get My Personalized Start";
   const offerCTAText = "Unlock the Starter";
-
+  const currentOutcome = getOutcomeContent[effectiveOutcome];
   return (
     <div className="min-h-screen bg-background">
       {/* Sticky Timer (top-right) */}
       {scrolled && (
-        <div className="fixed top-4 right-4 px-4 py-2 rounded-lg bg-secondary/90 text-secondary-foreground text-sm font-semibold shadow-lg z-50 flex items-center gap-2">
-          <Clock className="h-4 w-4" />
-          <span>Reserved until {deadline}</span>
+        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-gradient-to-t from-background via-background to-transparent p-4 pt-8 border-t border-border">
+          <button
+            onClick={() => handleCTA("sticky_mobile")}
+            className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95"
+          >
+            {primaryCTAText}
+          </button>
         </div>
       )}
 
       {/* ============ HERO ============ */}
-      <section className="px-4 py-16 md:py-24 bg-gradient-to-br from-background via-primary/5 to-background">
-        <div className="w-full max-w-2xl mx-auto space-y-12">
-          {/* Hero Text - Exact 4 lines */}
-          <div className="space-y-6 max-w-xl">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-              You're a <span className="text-secondary">{startType}</span> with
-              high <span className="text-secondary">{topObstacle}</span>
-            </h1>
-
-            <p className="text-lg leading-relaxed text-foreground">
-              You scored <span className="font-semibold">{clarityScore}/10</span>{" "}
-              on Step-1 clarity and hover{" "}
-              <span className="font-semibold">{hoverTime}</span> before action.
-            </p>
-
-            <p className="text-base leading-relaxed text-foreground">
-              That's not laziness — it's the OFF → ON pattern: when Step-1 is
-              vague, your brain freezes to protect you.
-            </p>
-
-            <p className="text-base leading-relaxed text-foreground">
-              You don't need another app. You need one tiny physical move that
-              flips you ON in 2–5 minutes.
-            </p>
+      
+      {/* ============ YOUR PATTERN ============ */}
+      <section className="px-4 py-12 bg-background border-t border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            You're Stuck in the{" "}
+            <span className="text-secondary">{currentOutcome.loopName}</span>
+          </h2>
+          
+          <p className="text-base leading-relaxed text-foreground">
+            {currentOutcome.description}
+          </p>
+          
+          <div className="space-y-3 pl-4 border-l-2 border-secondary/30">
+            {currentOutcome.bullets.map((bullet, idx) => (
+              <p key={idx} className="text-md text-muted-foreground leading-relaxed">
+                • {bullet}
+              </p>
+            ))}
           </div>
-
-          {/* OFF→ON Toggle Visual */}
-          <div className="h-56 rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-secondary/20 border-2 border-primary/30 flex items-center justify-center relative overflow-hidden">
-            <div className="relative flex items-center gap-8">
-              {/* OFF state */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-16 h-10 rounded-full bg-muted border-2 border-muted-foreground flex items-center justify-start p-1">
-                  <div className="w-8 h-8 rounded-full bg-muted-foreground transition-all" />
-                </div>
-                <span className="text-xs font-semibold text-muted-foreground">
-                  OFF
-                </span>
-              </div>
-
-              {/* Arrow */}
-              <ArrowRight className="h-6 w-6 text-secondary opacity-60" />
-
-              {/* ON state with glow */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-secondary/30 blur-lg animate-pulse" />
-                  <div className="relative w-16 h-10 rounded-full bg-secondary border-2 border-secondary flex items-center justify-end p-1">
-                    <div className="w-8 h-8 rounded-full bg-secondary-foreground transition-all" />
-                  </div>
-                </div>
-                <span className="text-xs font-semibold text-secondary">ON</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Primary CTA + Trust */}
-          <div className="space-y-3">
-            <button
-              onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
-            >
-              {primaryCTAText}
-              {/* <ArrowRight className="h-5 w-5" /> */}
-            </button>
-            <p className="text-center text-sm text-muted-foreground">
-              Instant PDF • Works in 2–5 minutes
+          
+          <div className="pt-4 border-t border-border">
+            <p className="text-base leading-relaxed text-foreground">
+              {currentOutcome.bridge}
             </p>
           </div>
         </div>
-      </section>
-
+      </section>  
       {/* ============ OFFER ============ */}
-      <section className="px-4 py-16 md:py-20 bg-card border-t border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-10">
-          {/* Heading */}
-          <div className="space-y-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              The 5-Minute Action Starter
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-12">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              There's a way out—and it takes less than 5 minutes
             </h2>
-            <p className="text-base text-muted-foreground">
-              Turn your brain from OFF to ON with one tiny move — no setup, no
-              new tools.
+            <p className="text-lg text-muted-foreground">
+              Stop Overthinking in 5 Minutes is an emergency toolkit for ADHD young adults who freeze before starting.
             </p>
           </div>
-
-          {/* What's Inside */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-foreground text-lg">
-              What's inside
-            </h3>
-           <div className="space-y-3">
-            {[
-                "Spark Plug Protocol (4 steps) — go from overwhelm to a single first move in <5 minutes",
-                "ON-Switch Script — copy-paste AI prompt that returns one tiny physical action, not a list",
-                "2-Minute Commitment — the momentum trick that makes starting easier than stopping",
-                "Friction-free setup — how to prep your space so starting has zero decisions",
-              ].map((item, idx) => (
-                // 1. Оборачиваем каждый элемент в 'flex'
-                <div key={idx} className="flex items-start gap-2 text-left">
-                  
-                  {/* 2. Вставляем ваш кастомный 'span' для буллита */}
-                  <span className="h-2 w-2 min-h-[0.5rem] min-w-[0.5rem] max-h-[0.5rem] max-w-[0.5rem] rounded-full bg-primary inline-block mt-[.5em]" />
-                  
-                  {/* 3. Оборачиваем текст в 'span' и применяем к нему стили */}
-                  <span className="text-sm text-foreground leading-relaxed">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Founders Bonuses */}
-         
 
           {/* Product Mockup */}
-          {/* <div className="h-48 rounded-2xl bg-primary/10 border-2 border-primary/20 flex items-center justify-center">
-            <div className="text-center">
-              <Workflow className="h-12 w-12 text-primary mx-auto mb-3 opacity-50" />
-              <p className="text-sm text-muted-foreground">
-                Product mockup — 9-page PDF on phone & desktop
-              </p>
-            </div>
-          </div> */}
-          <img className="h-64 mx-auto w-full object-contain flex items-center justify-center" src="/mockup.webp" alt="mockup" />
-          {/* Price & Guarantee */}
-          <div className="space-y-4 p-6 rounded-2xl bg-secondary/10 border border-secondary/20">
-            <p className="text-xl font-bold text-foreground">
-              ${launchPrice}
-              <span className="text-sm text-muted-foreground font-normal ml-2">
-                (Founders pricing)
-              </span>
-            </p>
-            <p className="text-sm text-foreground leading-relaxed">
-              Increases to ${futurePrice} on {deadline} 11:59 PM
-            </p>
-            
-          </div>
+          <img 
+            src="/mockup.webp"
+            alt="Stop Overthinking Toolkit"
+            className="mx-auto h-64 w-auto object-contain "
+          />
 
-          {/* CTA */}
-          <button
-            onClick={() => handleCTA("offer")}
-            className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
-          >
-            {primaryCTATextNoPrice}
-            <ArrowRight className="h-5 w-5" />
-          </button>
+          {/* What it is / What it's not side by side */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* What it is */}
+            <div className="space-y-4 p-6 rounded-xl bg-background border border-border/50">
+              <h3 className="font-bold text-foreground text-lg flex items-center gap-2">
+                <Lightbulb className="h-5 w-5 text-secondary" />
+                What it is:
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  "A science-backed 3-step framework to break the freeze",
+                  "Pattern-matched micro-moves for your specific loop type",
+                  "An 10-page fillable PDF + pocket cheat card",
+                  "Built on real ADHD research (behavioral activation, implementation intentions, cognitive reappraisal)",
+                ].map((item, idx) => (
+                  <li key={idx} className="text-sm text-foreground flex gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-secondary flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* What it's NOT */}
+            <div className="space-y-4 p-6 rounded-xl bg-background border border-border/50">
+              <h3 className="font-bold text-foreground text-lg">What it's NOT:</h3>
+              <ul className="space-y-3">
+                {[
+                  "Another planner you'll abandon",
+                  "A complex system",
+                  "Motivational fluff",
+                ].map((item, idx) => (
+                  <li key={idx} className="text-sm text-muted-foreground flex gap-2">
+                    <span className="text-secondary font-bold">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ============ WHY IT WORKS ============ */}
-      <section className="px-4 py-16 md:py-20 bg-background">
+      {/* ============ WHAT HAPPENS ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-10">
-          {/* 4-Icon Protocol Strip */}
-          <div className="grid grid-cols-4 gap-3 md:gap-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            What happens when you use it
+          </h2>
+
+          {/* Feature Grid */}
+          <div className="space-y-4">
             {[
-              { icon: CheckCircle2, label: "Capture", ariaLabel: "Capture step" },
               {
-                icon: Workflow,
-                label: "Decompose",
-                ariaLabel: "Decompose step",
+                icon: Flame,
+                title: "Start even when stuck",
+                desc: "One messy move beats zero perfect plans",
               },
-              { icon: Clock, label: "Commit", ariaLabel: "2-minute timer commit" },
-              { icon: Zap, label: "Start", ariaLabel: "Start action" },
+              {
+                icon: Brain,
+                title: "Shrink impossible tasks",
+                desc: 'Turn "write the email" into "write one sentence"',
+              },
+              {
+                icon: Zap,
+                title: "Shut down spirals fast",
+                desc: "Name the loop, shift in 5 minutes, lock it with one phrase",
+              },
+              {
+                icon: CheckCircle2,
+                title: "Get momentum without pressure",
+                desc: "Works even on your worst, most tired days",
+              },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center gap-2 p-4 rounded-lg bg-card border border-border"
+                className="flex gap-4 p-5 rounded-lg bg-card border border-border/50 transition-all hover:border-secondary/30"
               >
-                <item.icon
-                  className="h-6 w-6 text-secondary"
-                  aria-label={item.ariaLabel}
-                />
-                <span className="text-xs font-semibold text-foreground text-center">
+                <item.icon className="h-6 w-6 text-secondary flex-shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-semibold text-foreground">{item.title}</p>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ OBJECTION: OVERTHINK THE TOOLKIT ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              "But what if I overthink the toolkit itself?"
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              We built it for that.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                label: "One-page entry point",
+                desc: "Answer 3 questions, pick your pattern, do one 5-minute move",
+              },
+              {
+                label: "No setup required",
+                desc: "Open PDF → Use tonight",
+              },
+              {
+                label: "Pattern-specific actions",
+                desc: "You don't choose—we match the move to your loop type",
+              },
+              {
+                label: "Cheat card included",
+                desc: "Screenshot it. Use it when frozen. That's it.",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="space-y-2 p-5 rounded-lg bg-background border border-border/50">
+                <p className="font-semibold text-foreground text-base">{item.label}</p>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ WHAT'S INSIDE ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            What's inside
+          </h2>
+
+          <div className="space-y-6">
+            {/* Intro */}
+            <div className="space-y-3 p-6 rounded-lg bg-card border border-border/50">
+              <p className="font-semibold text-lg text-foreground">
+                A 3-step system that breaks your specific overthinking pattern:
+              </p>
+            </div>
+
+            {/* The 3-Step Framework */}
+            <div className="grid md:grid-cols-3 gap-4">
+              {[
+                {
+                  number: "1",
+                  step: "NAME IT",
+                  desc: "Identify your freeze (takes 30 seconds)",
+                },
+                {
+                  number: "2",
+                  step: "SHIFT IT",
+                  desc: "One pattern-matched 5-minute move",
+                },
+                {
+                  number: "3",
+                  step: "LOCK IT",
+                  desc: "Brain-reset phrase that makes it stick",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-lg bg-card border-2 border-secondary/20 hover:border-secondary/40 transition-colors space-y-2"
+                >
+                  <div className="text-3xl font-bold text-secondary">
+                    {item.number}
+                  </div>
+                  <p className="font-bold text-foreground">{item.step}</p>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* You'll get */}
+            <div className="space-y-4 p-6 rounded-lg bg-primary/5 border border-primary/20">
+              <h3 className="font-semibold text-lg text-foreground">You'll get:</h3>
+              <ul className="space-y-3">
+                {[
+                  "Your specific loop decoded + the exact move that breaks it",
+                  "Pocket cheat card (screenshot when frozen)",
+                  "The science behind why this works for ADHD brains",
+                ].map((item, idx) => (
+                  <li key={idx} className="text-sm text-foreground flex gap-2">
+                    <span className="text-secondary font-bold">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* No fluff callout */}
+            <div className="space-y-3 p-6 rounded-lg bg-card border-2 border-secondary/20">
+              <p className="font-semibold text-foreground text-lg">
+                No fluff. No theory. Just:
+              </p>
+              <p className="text-base text-muted-foreground">
+                "I'm stuck" → do this → unstuck.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ YOU'LL USE IT TONIGHT ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            You'll use it tonight
+          </h2>
+
+          {/* 4-Icon Protocol Strip - Responsive */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {[
+              { icon: Clock, label: "Pick one stuck task" },
+              { icon: Brain, label: "Answer 3 prompts" },
+              { icon: Zap, label: "Do one 3-minute move" },
+              { icon: CheckCircle2, label: "Done" },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center gap-3 p-4 rounded-lg bg-background border border-border/50 hover:border-secondary/30 transition-colors"
+              >
+                <item.icon className="h-5 w-5 md:h-6 md:w-6 text-secondary flex-shrink-0" />
+                <span className="text-xs md:text-sm font-semibold text-center text-foreground leading-tight">
                   {item.label}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Mechanism Text */}
-          <div className="space-y-4">
-            <p className="text-base leading-relaxed text-foreground">
-              When Step-1 is vague, ADHD brains flip OFF to prevent failure.
-            </p>
-            <p className="text-base leading-relaxed text-foreground">
-              The Spark Plug Protocol externalizes Step-1 and asks your body to
-              move first.
-            </p>
-            <p className="text-base leading-relaxed text-foreground">
-              Motivation follows motion. Same 4 steps, any task.
+          <div className="space-y-3 p-6 rounded-lg bg-background border border-border/50">
+            <p className="font-semibold text-foreground">No account. No therapist. No perfect day required.</p>
+            <p className="text-sm text-muted-foreground">
+              Just one stuck task, one answer session, one tiny move. Start today, decide later.
             </p>
           </div>
-
-          {/* Secondary CTA */}
-          <button
-            onClick={() => handleCTA("mechanism")}
-            className="w-full px-6 py-3 rounded-lg border-2 border-secondary text-secondary font-semibold transition-all duration-300 hover:bg-secondary/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
-          >
-            {secondaryCTAText}
-          </button>
         </div>
       </section>
 
-      {/* ============ FROM YOUR QUIZ ============ */}
-      <section className="px-4 py-16 md:py-20 bg-card border-t border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-8">
+      {/* ============ PRICING TABLE ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            From your quiz
+            What you're getting
           </h2>
 
-          {/* Personalization Chips */}
+          {/* Pricing Table */}
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className=" whitespace-nowrap text-left py-3 px-4 font-semibold text-foreground text-sm md:text-base">
+                    Item
+                  </th>
+                  <th className="whitespace-nowrap text-right py-3 px-4 font-semibold text-foreground text-sm md:text-base">
+                    Value
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { label: "Stop Overthinking Toolkit (10-page PDF)", value: "$19" },
+                  { label: "Pattern Finder Guide", value: "$9" },
+                  { label: "Pocket Cheat Card", value: "$7" },
+                  { label: "Action Formula Templates", value: "$11" },
+                ].map((item, idx) => (
+                  <tr key={idx} className="border-b border-border/50">
+                    <td className="py-3 px-4 text-foreground text-sm md:text-base">{item.label}</td>
+                    <td className="whitespace-nowrap py-3 px-4 text-right text-foreground font-semibold text-sm md:text-base">
+                      {item.value}
+                    </td>
+                  </tr>
+                ))}
+                <tr className="bg-secondary/10">
+                  <td className="py-3 px-4 font-semibold text-foreground text-sm md:text-base">
+                    Bundle Value
+                  </td>
+                  <td className="py-3 px-4 text-right font-bold text-secondary text-sm md:text-base">
+                    $46
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-foreground text-lg md:text-xl">
+                    Your Price Today
+                  </td>
+                  <td className="whitespace-nowrap py-4 px-4 text-right font-bold text-secondary text-2xl md:text-3xl">
+                    ${launchPrice}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pricing Info */}
+
+        </div>
+      </section>
+
+      {/* ============ DOES IT ACTUALLY WORK ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            "Does it actually work?"
+          </h2>
+
           <div className="space-y-4">
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Built on peer-reviewed ADHD research:
+            </p>
             {[
               {
-                label: "Step-1 Clarity",
-                value: `${clarityScore}/10`,
-                note: "→ high freeze risk",
+                title: "Behavioral Activation",
+                desc: "Tiny actions reduce anxiety",
               },
               {
-                label: "Emotion at start",
-                value: emotion,
-                note: "→ overload at initiation",
+                title: "Implementation Intentions",
+                desc: '"If I freeze, then I do X" rewires habit loops',
               },
               {
-                label: "Hover time",
-                value: hoverTime,
-                note: "→ decision loop",
+                title: "Cognitive Load Theory",
+                desc: "Reducing complexity improves executive function",
               },
-            ].map((chip, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col gap-1 p-4 rounded-lg bg-background border border-border"
-              >
-                <p className="text-xs font-semibold text-muted-foreground">
-                  {chip.label}
+              {
+                title: "Action Priming",
+                desc: 'Micro-movement "primes" larger action',
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="p-4 rounded-lg bg-background border border-border/50">
+                <p className="font-semibold text-foreground text-sm">
+                  {item.title}
                 </p>
-                <p className="text-base font-bold text-foreground">
-                  {chip.value}
-                  <span className="ml-2 text-sm font-normal text-muted-foreground">
-                    {chip.note}
-                  </span>
-                </p>
+                <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* Bridge Line */}
-          <p className="text-base leading-relaxed text-foreground border-t border-border pt-6">
-            We convert that <span className="font-semibold">{emotion}</span> into
-            one small, physical action your brain reads as "safe, doable, now."
+          <div className="p-6 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
+            <p className="text-sm text-foreground leading-relaxed">
+              This isn't theory. It's what ADHD therapists and coaches already teach—just packaged for your worst moments.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ ONE-TASK GUARANTEE ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            One-task guarantee
+          </h2>
+
+          <div className="space-y-4 p-6 rounded-lg bg-card border-2 border-secondary/20">
+            <p className="text-base text-foreground leading-relaxed">
+              Use it on one stuck task tonight.
+            </p>
+            <p className="text-base text-foreground leading-relaxed">
+              If it doesn't help you start something—anything—just email us. We'll either:
+            </p>
+            <ul className="space-y-2 ml-4">
+              <li className="text-base text-foreground flex gap-2">
+                <span className="text-secondary font-bold">→</span>
+                <span>Walk you through it personally, or</span>
+              </li>
+              <li className="text-base text-foreground flex gap-2">
+                <span className="text-secondary font-bold">→</span>
+                <span>Refund you immediately</span>
+              </li>
+            </ul>
+          </div>
+
+          <p className="text-center font-semibold text-foreground">
+            You risk ${launchPrice}. You gain the ability to start.
           </p>
 
-          {/* Inline CTA */}
           <button
-            onClick={() => handleCTA("personalization")}
-            className="inline-flex items-center gap-2 text-secondary font-semibold hover:text-secondary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-1 rounded px-1"
+            onClick={() => handleCTA("guarantee")}
+            className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
-            {secondaryCTAText}
+            {primaryCTAText}
+            {/* <ArrowRight className="h-5 w-5" /> */}
           </button>
         </div>
       </section>
 
-      {/* ============ SOCIAL PROOF ============ */}
-      <section className="px-4 py-16 md:py-20 bg-background">
+      {/* ============ FAQ ACCORDION ============ */}
+      <section className="px-4 py-16 md:py-20 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            What people are saying
+            Quick questions
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {[
               {
-                imageUrl: testi1,
-                name: "Sarah, 34 — freelance developer",
-                quote:
-                  "Avoided invoicing for 3 weeks → sent two invoices in 6 minutes.",
+                question: "Do I need an ADHD diagnosis?",
+                answer:
+                  "No. If you overthink and freeze, this will help. This is designed for anyone who struggles with analysis paralysis and getting started.",
               },
               {
-                imageUrl: testi2,
-                name: "Marcus, 41 — startup founder",
-                quote:
-                  "Used it for a dreaded client call and taxes. Moving in under 5 minutes, twice.",
+                question: "Is this just for personal tasks?",
+                answer:
+                  "No. Works for work emails, business decisions, school projects—anything you're avoiding. The patterns are universal.",
               },
               {
-                imageUrl: testi3,
-                name: "Evan, 29 — content creator",
-                quote:
-                  "Pasted a vague task → got a concrete first action. Used it 6 times this week.",
+                question: "What if I'm too burned out even for 5 minutes?",
+                answer:
+                  "The first move is 60 seconds. If your brain can read this sentence, it can do Step 1. That's literally all we ask for.",
+              },
+              {
+                question: "What if I forget to use it?",
+                answer:
+                  "That's why you get a 1-page card and a screenshot version. Tape it to your wall. Make it your phone background. You'll only need to use it once to remember it helps.",
               },
             ].map((item, idx) => (
-              <div
+              <button
                 key={idx}
-                className="p-5 rounded-lg bg-card border border-border space-y-2"
+                onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
+                className="w-full text-left border border-border/50 rounded-lg px-6 py-4 transition-all hover:bg-secondary/5"
               >
-                <img
-                  src={item.imageUrl}
-                  alt={item.name}
-                  className="h-32 mb-2" 
-                />
-                <p className="font-semibold text-sm text-foreground">
-                  {item.name}
-                </p>
-                <p className="text-sm text-muted-foreground italic leading-relaxed">
-                  "{item.quote}"
-                </p>
-              </div>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-semibold text-foreground text-sm md:text-base">{item.question}</p>
+                  <ChevronDown
+                    className={`h-5 w-5 text-secondary flex-shrink-0 transition-transform ${
+                      expandedFAQ === idx ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+                {expandedFAQ === idx && (
+                  <p className="text-muted-foreground leading-relaxed mt-4 pt-4 border-t border-border/50 text-sm md:text-base">
+                    {item.answer}
+                  </p>
+                )}
+              </button>
             ))}
           </div>
-
-          {/* CTA */}
-          <button
-            onClick={() => handleCTA("social_proof")}
-            className="w-full px-6 py-3 rounded-lg border-2 border-secondary text-secondary font-semibold transition-all duration-300 hover:bg-secondary/10 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
-          >
-            I'm in — Flip Me ON
-          </button>
         </div>
       </section>
 
-      {/* ============ WHAT YOU GET ============ */}
-      
-
-      {/* ============ OBJECTION KILL BOX ============ */}
-      <section className="px-4 py-16 md:py-20 bg-white border-t border-border">
+      {/* ============ FINAL CTA ============ */}
+      <section className="px-4 py-16 md:py-20 bg-background border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            Fast answers
-          </h2>
-
           <div className="space-y-4">
-            {[
-              {
-                q: "No time.",
-                a: "Good. This takes 2–5 minutes. Start, then stop if you need to.",
-              },
-              {
-                q: "Tried planners.",
-                a: "This isn't a planner. It's the ignition that makes any planner work.",
-              },
-              {
-                q: "No motivation.",
-                a: "We start with body motion first — motivation follows.",
-              },
-              {
-                q: "Too complex.",
-                a: "We only handle the first visible inch.",
-              },
-              {
-                q: "Not just business?",
-                a: "Works for admin, appointments, taxes — anything that freezes you.",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="space-y-1">
-                <p className="font-semibold text-foreground text-md">{item.q}</p>
-                <p className="text-md text-muted-foreground leading-relaxed">
-                  {item.a}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Inline Text CTA */}
-          <button
-            onClick={() => handleCTA("objections")}
-            className="inline-flex text-secondary font-semibold hover:text-secondary/80 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-1 rounded px-1"
-          >
-            Start for 5 minutes. That's it.
-          </button>
-        </div>
-      </section>
-
-      {/* ============ URGENCY FOOTER ============ */}
-      <section className="px-4 py-16 md:py-20 bg-background border-t border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-8">
-          {/* Countdown Bar */}
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-secondary/20 via-accent/10 to-secondary/20 border-2 border-secondary/30 space-y-3">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 text-secondary" />
-              <p className="font-bold text-foreground">
-                Founders Edition ends {deadline} at 11:59 PM
-              </p>
-            </div>
-            <p className="text-sm text-foreground leading-relaxed">
-              Price goes ${launchPrice} → ${futurePrice} and bonuses disappear.
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Download the 5-Minute Toolkit
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Use it on one task tonight—see how it works before deciding anything.
             </p>
-            
           </div>
 
-          {/* Large CTA */}
           <button
-            onClick={() => handleCTA("urgency")}
+            onClick={() => handleCTA("final_cta")}
             className="w-full px-8 py-6 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
             {primaryCTAText}
-            {/* <ArrowRight className="h-6 w-6" />   */}
+            {/* <ArrowRight className="h-6 w-6" /> */}
           </button>
 
           {/* Microtrust */}
-          <p className="text-center text-sm text-muted-foreground">
-            Instant delivery • Start something today 
-          </p>
+          <div className="flex items-center justify-center gap-4 text-xs font-semibold text-muted-foreground flex-wrap">
+            <div className="flex items-center gap-1">
+              <Zap className="h-3.5 w-3.5 text-secondary" />
+              10-page PDF
+            </div>
+            <span>•</span>
+            <div className="flex items-center gap-1">
+              <CheckCircle2 className="h-3.5 w-3.5 text-secondary" />
+              Instant download
+            </div>
+            <span>•</span>
+            <span>Use it tonight</span>
+          </div>
         </div>
       </section>
     </div>

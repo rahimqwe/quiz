@@ -14,16 +14,8 @@ import { Q2IntensityScreen } from "./pages/quiz/Q2Intensity";
 import { Q3ClarityScreen } from "./pages/quiz/Q3Clarity";
 import { Q4EmotionScreen } from "./pages/quiz/Q4Emotion";
 import { Q5Pattern2Screen } from "./pages/quiz/Q5Pattern2";
-import { InterstitialScreen } from "./pages/quiz/Interstitial";
-import { InterstitialBinaryScreen } from "./pages/quiz/InterstitialBinary";
-import { InterstitialObjectionsScreen } from "./pages/quiz/InterstitialObjections";
 import { Q6TaskScreen } from "./pages/quiz/Q6Task";
-import { Q7DerailScreen } from "./pages/quiz/Q7Derail";
-import { Q8TimeScreen } from "./pages/quiz/Q8Time";
-import { Q9ToolsScreen } from "./pages/quiz/Q9Tools";
-import { Q10MomentumScreen } from "./pages/quiz/Q10Momentum";
-import { Q11DeliveryScreen } from "./pages/quiz/Q11Delivery";
-import { Q12TaskScreen } from "./pages/quiz/Q12Task";
+import { Q11DeliveryScreen } from "./pages/quiz/email";
 import { LoadingScreen } from "./pages/Loading";
 import { ResultsPage } from "./pages/Results";
 import { AnalyticsListener } from "./AnalyticsListener";
@@ -44,16 +36,8 @@ const App = () => (
             <Route path="/quiz/3" element={<Q3ClarityScreen />} />
             <Route path="/quiz/4" element={<Q4EmotionScreen />} />
             <Route path="/quiz/5" element={<Q5Pattern2Screen />} />
-            <Route path="/quiz/interstitial" element={<InterstitialScreen />} />
-            <Route path="/quiz/interstitial-binary" element={<InterstitialBinaryScreen />} />
-            <Route path="/quiz/interstitial-objections" element={<InterstitialObjectionsScreen />} />
             <Route path="/quiz/6" element={<Q6TaskScreen />} />
-            <Route path="/quiz/7" element={<Q7DerailScreen />} />
-            <Route path="/quiz/8" element={<Q8TimeScreen />} />
-            <Route path="/quiz/9" element={<Q9ToolsScreen />} />
-            <Route path="/quiz/10" element={<Q10MomentumScreen />} />
             <Route path="/quiz/11" element={<Q11DeliveryScreen />} />
-            <Route path="/quiz/12" element={<Q12TaskScreen />} />
             <Route path="/loading" element={<LoadingScreen />} />
             <Route path="/results" element={<ResultsPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

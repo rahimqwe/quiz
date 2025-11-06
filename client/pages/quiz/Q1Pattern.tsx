@@ -15,15 +15,15 @@ export const Q1PatternScreen: React.FC = () => {
   return (
     <QuizScreenTemplate
       screenNumber={1}
-      question="When you try to start, what happens first most of the time?"
+      question="Which of these feels most familiar when you try to get started on something?"
       options={[
-        "My brain freezes / blank screen",
-        "I spin in tabs, notes, and \"planning\"",
-        "I wait for deadline-panic to kick in",
-        "I overthink the \"right\" first step",
+        "I plan the perfect way to start… but never do",
+        "I bounce between options and pick nothing",
+        "I read/watch too much, then shut down",
+        "I overthink a message or reply… and ghost them instead",
       ]}
-      answerId="q1_pattern"
-      totalScreens={11}
+      answerId="q1"
+      totalScreens={6}
     />
   );
 };

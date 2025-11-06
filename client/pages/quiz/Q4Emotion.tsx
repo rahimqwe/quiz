@@ -15,10 +15,14 @@ export const Q4EmotionScreen: React.FC = () => {
   return (
     <QuizScreenTemplate
       screenNumber={4}
-      question="What shows up first?"
-      options={["Dread", "Guilt", "Anxiety", "Boredom"]}
-      answerId="q4_emotion"
-      totalScreens={11}
+      question="Which of these sounds like something you’ve said to yourself?"
+      options={[
+        "I’m not lazy, I just don’t know where to start", 
+        "Why can’t I just do the thing?", 
+        "It’s been on my list forever, but I can’t open it", 
+        "I hate how I shut down over small stuff"]}
+      answerId="q4"
+      totalScreens={6}
     />
   );
 };

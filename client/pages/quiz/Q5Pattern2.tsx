@@ -9,7 +9,7 @@ export const Q5Pattern2Screen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 6,
+        step: 5,
         question_id: "q5",
       });
     }
@@ -17,16 +17,15 @@ export const Q5Pattern2Screen: React.FC = () => {
   return (
     <QuizScreenTemplate
       screenNumber={5}
-      question="Which start pattern feels most like you?"
+      question="How long would you realistically spend trying to get unstuck… in the moment?"
       options={[
-        "All-or-nothing (dead stop → all-night sprint)",
-        "Endless prep (notes, tools, 'perfect system')",
-        "Avoidance until panic → then I move",
-        "Start tiny bursts, fizzle fast",
+        "1 minute",
+        "3 minutes",
+        "5 minutes",
+        "If it actually helped me move, I’d try it",
       ]}
-      answerId="q5_pattern2"
-      totalScreens={11}
-      onNavigateNext={() => navigate("/quiz/6")}
+      answerId="q5"
+      totalScreens={6}
     />
   );
 };
