@@ -2,7 +2,7 @@ import { QuizAnswers, OutcomeType } from "@/hooks/use-quiz";
 
 const LAUNCH_PRICE = 12;
 const FUTURE_PRICE = 29;
-const DEADLINE_DATE = new Date("2025-11-09T23:59:59");
+const DEADLINE_DATE = new Date("2025-11-09T23:59:59");  
 
 export const calculateClarityScore = (
   clarity: string,

@@ -25,7 +25,7 @@ export const Q6TaskScreen: React.FC = () => {
       ]}
       answerId="q6"
       totalScreens={6}
-      onNavigateNext={() => navigate("/loading")}
+      onNavigateNext={() => navigate("/email")}
     />
   );
 };
