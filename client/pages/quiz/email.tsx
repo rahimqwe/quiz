@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "@/components/quiz/ProgressBar";
 import { Mail } from "lucide-react";
 
-export const Q11DeliveryScreen: React.FC = () => {
+export const Email: React.FC = () => {
   const formRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
@@ -12,8 +12,8 @@ export const Q11DeliveryScreen: React.FC = () => {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
         event: "quiz_step_view",
-        step: 11,
-        question_id: "q11",
+        step: 7,
+        question_id: "email",
       });
     }
     // Dynamically inject the systeme.io form script
@@ -69,7 +69,7 @@ export const Q11DeliveryScreen: React.FC = () => {
     <div className="min-h-screen bg-background px-4 py-8 md:py-12">
       <div className="w-full max-w-2xl mx-auto space-y-8">
         {/* Progress Bar */}
-        <ProgressBar current={11} total={11} />
+        <ProgressBar current={6} total={6} />
         <div className="space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-tight text-center">
             Enter your email to get your result

@@ -15,7 +15,7 @@ import { Q3ClarityScreen } from "./pages/quiz/Q3Clarity";
 import { Q4EmotionScreen } from "./pages/quiz/Q4Emotion";
 import { Q5Pattern2Screen } from "./pages/quiz/Q5Pattern2";
 import { Q6TaskScreen } from "./pages/quiz/Q6Task";
-import { Q11DeliveryScreen } from "./pages/quiz/email";
+import { Email } from "./pages/quiz/email";
 import { LoadingScreen } from "./pages/Loading";
 import { ResultsPage } from "./pages/Results";
 import { AnalyticsListener } from "./AnalyticsListener";
@@ -37,7 +37,7 @@ const App = () => (
             <Route path="/quiz/4" element={<Q4EmotionScreen />} />
             <Route path="/quiz/5" element={<Q5Pattern2Screen />} />
             <Route path="/quiz/6" element={<Q6TaskScreen />} />
-            <Route path="/quiz/11" element={<Q11DeliveryScreen />} />
+            <Route path="/quiz/email" element={<Email />} />
             <Route path="/loading" element={<LoadingScreen />} />
             <Route path="/results" element={<ResultsPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
