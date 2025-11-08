@@ -133,16 +133,14 @@ export const ResultsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Sticky Timer (top-right) */}
-      {scrolled && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-gradient-to-t from-background via-background to-transparent p-4 pt-8 border-t border-border">
-          <button
-            onClick={() => handleCTA("sticky_mobile")}
-            className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95"
-          >
-            {primaryCTAText}
-          </button>
-        </div>
-      )}
+      <div className="fixed bottom-0 left-0  right-0 z-40  flex justify-center bg-gradient-to-t from-background via-background to-transparent p-4 pt-8 pb-8 border-t border-border">
+        <button
+          onClick={() => handleCTA("sticky_mobile")}
+          className="w-full px-6 max-w-[400px] py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95"
+        >
+          {primaryCTAText}
+        </button>
+      </div>
 
       {/* ============ HERO ============ */}
       
