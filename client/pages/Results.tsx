@@ -480,6 +480,9 @@ const testimonials: Testimonial[] = [
       {/* ============ TESTIMONIALS ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            What ADHD overthinkers like you are saying
+          </h2>
           <TestimonialCarousel testimonials={testimonials} />
         </div>
       </section>
