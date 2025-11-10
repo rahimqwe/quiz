@@ -15,7 +15,7 @@ export const getOutcomeContent: Record<OutcomeType, OutcomeContent> = {
       "You mentally rehearse the steps until they get too complex to start.",
       "You get overwhelmed when you don't see a guaranteed outcome.",
     ],
-    bridge: "You don't need more advice — you need a simple, momentum-first reset that lets you move without having it all figured out.",
+    bridge: "You don’t need more advice — you need a simple reset to move without having it all figured out",
   },
   B: {
     loopName: "Research Spiral",
@@ -24,7 +24,7 @@ export const getOutcomeContent: Record<OutcomeType, OutcomeContent> = {
       "You 'prepare' endlessly to feel ready — but it never arrives.",
       "You feel productive but avoid the real first step.",
     ],
-    bridge: "You don't need another video. You need a small, physical action that flips your brain into motion mode.",
+    bridge: "You don’t need another video — you need one small physical action to flip your brain into motion",
   },
   C: {
     loopName: "Social Panic Loop",
@@ -33,7 +33,7 @@ export const getOutcomeContent: Record<OutcomeType, OutcomeContent> = {
       "You stress about replies, DMs, and tasks involving other people.",
       "You freeze to avoid embarrassment, even if it delays everything.",
     ],
-    bridge: "This isn't therapy. It's a micro-move that quiets the panic loop and makes initiating safe again.",
+    bridge: "This isn’t therapy — it’s a tiny move that quiets the panic loop so starting feels safe",
   },
   D: {
     loopName: "Options Freeze",
@@ -42,6 +42,6 @@ export const getOutcomeContent: Record<OutcomeType, OutcomeContent> = {
       "You hover between tabs, waiting for a 'perfect' pick to emerge.",
       "You feel more tired the longer you debate what to do first.",
     ],
-    bridge: "This tool helps you bypass the choice maze by anchoring to *one* tiny move — fast.",
+    bridge: "You need a tool that skips the choice maze by locking you onto one tiny move, fast",
   },
 };

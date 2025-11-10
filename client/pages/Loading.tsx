@@ -4,8 +4,8 @@ import { useQuiz } from "@/hooks/use-quiz";
 
 const messages = [
   "Analyzing your answers…",
-  "Locating your OFF switch…",
-  "Building your Start Profile…",
+  "Identifying your overthinking pattern...",
+  "Almost there — preparing your results...",
 ];
 
 export const LoadingScreen: React.FC = () => {

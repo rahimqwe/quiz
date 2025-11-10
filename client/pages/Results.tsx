@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuiz } from "@/hooks/use-quiz";
+import { StarRating } from "@/components/ui/star-rating.tsx";
+import { TestimonialCarousel } from "@/components/ui/testimonial-carousel.tsx";
 import {
   calculateClarityScore,
   getTopObstacle,
@@ -21,11 +23,48 @@ import {
   Shield,
   Flame,
 } from "lucide-react";
+
 import testi1 from "/public/testi1.webp";
 import testi2 from "/public/testi2.webp";
 import testi3 from "/public/testi3.webp";
 import { getOutcomeContent } from '@/components/results/OutcomeContent.tsx';
+import e from "cors";
 export const ResultsPage: React.FC = () => {
+  interface Testimonial {
+  quote: string;
+  attribution: string;
+  rating: number;
+  initials: string;
+  bgColor: string;
+  image?: string;
+}
+const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Before this, I thought I was broken. I'd sit at my laptop for hours, tabs open, mind racing, accomplishing nothing. After week 3, something clicked. I actually *started* things without spiraling. I'm not 'cured,' but I finally feel like I'm driving my brain instead of being driven by it",
+    attribution: "Jordan",
+    rating: 5,
+    initials: "JM",
+    bgColor: "bg-blue-400",
+  },
+  {
+    quote:
+      "I've bought every ADHD planner, app, and course. Nothing worked because they all assumed I could just 'start.' This was different – it actually addressed the *freeze*, not the task. Within 10 days I'd sent emails I'd been avoiding for weeks. Worth every penny",
+    attribution: "Alex",
+    rating: 4.5,
+    initials: "AD",
+    bgColor: "bg-orange-400",
+  },
+  {
+    quote:
+      "My worst nightmare was replying to texts. I'd draft, delete, overthink, and ghost people for days. The 'Social Panic Loop' section nailed exactly what I do. Now I use the 5-minute rule and actually hit send. My friends noticed I'm back",
+    attribution: "Casey",
+    rating: 5,
+    initials: "CL", 
+    bgColor: "bg-pink-400",
+  },
+];
+
   const navigate = useNavigate();
   const { outcome, answers } = useQuiz();
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
@@ -126,26 +165,23 @@ export const ResultsPage: React.FC = () => {
 };
 
   const primaryCTAText = `Get My 5-Minute Start - $${launchPrice}`;
-  const primaryCTATextNoPrice = "Get My 5-Minute Start";
-  const secondaryCTAText = "Get My Personalized Start";
-  const offerCTAText = "Unlock the Starter";
+  const secondaryCTAText = `Show Me My Pattern's Fix`;
+  const thirdCTAText = `Stop Overthinking Now`;
+  const fourthCTAText = `Grab the Guide`;
+  const fifthCTAText = `Start Breaking the Loop`;
+  const sixthCTAText = `Get the Circuit Breakers`;
+  const seventhCTAText = `Get My 5-Minute Start`;
+  const eightCTAText = `Stop Overthinking Now - $${launchPrice}`;
   const currentOutcome = getOutcomeContent[effectiveOutcome];
   return (
     <div className="min-h-screen bg-background">
       {/* Sticky Timer (top-right) */}
-      <div className="fixed bottom-0 left-0  right-0 z-40  flex justify-center bg-gradient-to-t from-background via-background to-transparent p-4 pt-8 pb-8 border-t border-border">
-        <button
-          onClick={() => handleCTA("sticky_mobile")}
-          className="w-full px-6 max-w-[400px] py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-sm transition-all duration-300 hover:shadow-lg active:scale-95"
-        >
-          {primaryCTAText}
-        </button>
-      </div>
+      
 
       {/* ============ HERO ============ */}
       
       {/* ============ YOUR PATTERN ============ */}
-      <section className="px-4 py-12 bg-background border-t border-border">
+      <section className="px-4 py-12 sm:py-10 md:py-10 sm:py-8  bg-background border-t border-border">
         <div className="w-full max-w-2xl mx-auto space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             You're Stuck in the{" "}
@@ -172,11 +208,11 @@ export const ResultsPage: React.FC = () => {
         </div>
       </section>  
       {/* ============ OFFER ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+      <section className="px-4 py-10 sm:py-8 md:py-8 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-12">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              There's a way out—and it takes less than 5 minutes
+              There's a way out - and it takes only 5 minutes
             </h2>
             <p className="text-lg text-muted-foreground">
               Stop Overthinking in 5 Minutes is an emergency toolkit for ADHD young adults who freeze before starting.
@@ -230,6 +266,33 @@ export const ResultsPage: React.FC = () => {
               </ul>
             </div>
           </div>
+         <div className="space-y-4 pt-6 border-t border-border/30">
+            <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {primaryCTAText}
+            </button>
+            <div className="flex items-center justify-center gap-4 text-xs font-semibold text-muted-foreground flex-wrap">
+              <div className="flex items-center gap-1">
+                <Zap className="h-3.5 w-3.5 text-secondary" />
+                Instant access
+              </div>
+              <span>•</span>
+              <div className="flex items-center gap-1">
+                <Shield className="h-3.5 w-3.5 text-secondary" />
+                Science-backed
+              </div>
+              <span>•</span>
+              <span>Money-back guarantee</span>
+            </div>
+            <div className="text-center pt-2">
+              <p className="text-sm text-muted-foreground italic flex items-center justify-center gap-2 sm:flex-col">
+                <span className="text-base"><StarRating rating={4.8} /></span>
+                <span>4.8/5 from 143 members who stopped overthinking</span>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -276,6 +339,12 @@ export const ResultsPage: React.FC = () => {
               </div>
             ))}
           </div>
+          <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {secondaryCTAText}
+          </button>
         </div>
       </section>
 
@@ -316,6 +385,12 @@ export const ResultsPage: React.FC = () => {
               </div>
             ))}
           </div>
+          <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {thirdCTAText}
+          </button>
         </div>
       </section>
 
@@ -392,46 +467,23 @@ export const ResultsPage: React.FC = () => {
                 "I'm stuck" → do this → unstuck.
               </p>
             </div>
+            <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {fourthCTAText}
+          </button>
           </div>
         </div>
       </section>
-
-      {/* ============ YOU'LL USE IT TONIGHT ============ */}
+      
+      {/* ============ TESTIMONIALS ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            You'll use it tonight
-          </h2>
-
-          {/* 4-Icon Protocol Strip - Responsive */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {[
-              { icon: Clock, label: "Pick one stuck task" },
-              { icon: Brain, label: "Answer 3 prompts" },
-              { icon: Zap, label: "Do one 3-minute move" },
-              { icon: CheckCircle2, label: "Done" },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center gap-3 p-4 rounded-lg bg-background border border-border/50 hover:border-secondary/30 transition-colors"
-              >
-                <item.icon className="h-5 w-5 md:h-6 md:w-6 text-secondary flex-shrink-0" />
-                <span className="text-xs md:text-sm font-semibold text-center text-foreground leading-tight">
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-3 p-6 rounded-lg bg-background border border-border/50">
-            <p className="font-semibold text-foreground">No account. No therapist. No perfect day required.</p>
-            <p className="text-sm text-muted-foreground">
-              Just one stuck task, one answer session, one tiny move. Start today, decide later.
-            </p>
-          </div>
+          <TestimonialCarousel testimonials={testimonials} />
         </div>
       </section>
-
+                
       {/* ============ PRICING TABLE ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-10">
@@ -485,7 +537,12 @@ export const ResultsPage: React.FC = () => {
               </tbody>
             </table>
           </div>
-
+          <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {sixthCTAText}
+          </button>
           {/* Pricing Info */}
 
         </div>
@@ -534,6 +591,12 @@ export const ResultsPage: React.FC = () => {
               This isn't theory. It's what ADHD therapists and coaches already teach—just packaged for your worst moments.
             </p>
           </div>
+          <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {seventhCTAText}
+          </button>
         </div>
       </section>
 
@@ -647,7 +710,7 @@ export const ResultsPage: React.FC = () => {
             onClick={() => handleCTA("final_cta")}
             className="w-full px-8 py-6 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
-            {primaryCTAText}
+            {eightCTAText}
             {/* <ArrowRight className="h-6 w-6" /> */}
           </button>
 
