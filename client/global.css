@@ -13,7 +13,7 @@
   */
   :root {
     --background: 210 40% 98%;
-    --foreground: 218 49% 8%;
+    --foreground:218 29% 23%;
 
     --card: 0 0% 100%;
     --card-foreground: 218 49% 8%;
@@ -57,11 +57,12 @@
     --sidebar-border: 210 40% 92%;
 
     --sidebar-ring: 204 61% 83%;
+    color:#2D3848; 
   }
 
   .dark {
     --background: 210 40% 98%;
-    --foreground: 218 49% 8%;
+    --foreground: 218 29% 23%;
 
     --card: 0 0% 100%;
     --card-foreground: 218 49% 8%;

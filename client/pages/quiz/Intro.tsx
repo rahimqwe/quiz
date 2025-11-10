@@ -46,7 +46,7 @@ export const IntroScreen: React.FC = () => {
         {/* CTA */}
         <button
           onClick={handleStart}
-          className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+          className="w-full px-6 py-3 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
         >
           Start Quiz
         </button>

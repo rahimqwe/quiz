@@ -174,14 +174,14 @@ const testimonials: Testimonial[] = [
   const eightCTAText = `Stop Overthinking Now - $${launchPrice}`;
   const currentOutcome = getOutcomeContent[effectiveOutcome];
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background  ">
       {/* Sticky Timer (top-right) */}
       
 
       {/* ============ HERO ============ */}
       
       {/* ============ YOUR PATTERN ============ */}
-      <section className="px-4 py-12 sm:py-10 md:py-10 sm:py-8  bg-background border-t border-border">
+      <section className="px-4 py-8 sm:py-10 md:py-12 bg-background border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             You're Stuck in the{" "}
@@ -192,84 +192,37 @@ const testimonials: Testimonial[] = [
             {currentOutcome.description}
           </p>
           
-          <div className="space-y-3 pl-4 border-l-2 border-secondary/30">
-            {currentOutcome.bullets.map((bullet, idx) => (
-              <p key={idx} className="text-md text-muted-foreground leading-relaxed">
-                • {bullet}
-              </p>
-            ))}
-          </div>
+        
           
-          <div className="pt-4 border-t border-border">
+          {/* <div className="pt-4 border-t border-border">
             <p className="text-base leading-relaxed text-foreground">
               {currentOutcome.bridge}
             </p>
-          </div>
+          </div> */}
         </div>
       </section>  
       {/* ============ OFFER ============ */}
-      <section className="px-4 py-10 sm:py-8 md:py-8 bg-card border-b border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-12">
+      <section className="px-4 py-8 sm:py-10 md:py-12 bg-card border-b border-border text-center md:text-left">
+        <div className="w-full max-w-2xl mx-auto space-y-8 md:space-y-12">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               There's a way out - and it takes only 5 minutes
             </h2>
             <p className="text-lg text-muted-foreground">
-              Stop Overthinking in 5 Minutes is an emergency toolkit for ADHD young adults who freeze before starting.
+              Turn “I’ll start later” into “I did the first step” in 5 minutes, even on your most tired, overthinking days.
             </p>
           </div>
-
+            
           {/* Product Mockup */}
           <img 
             src="/mockup.webp"
             alt="Stop Overthinking Toolkit"
             className="mx-auto h-64 w-auto object-contain "
           />
-
-          {/* What it is / What it's not side by side */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* What it is */}
-            <div className="space-y-4 p-6 rounded-xl bg-background border border-border/50">
-              <h3 className="font-bold text-foreground text-lg flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-secondary" />
-                What it is:
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "A science-backed 3-step framework to break the freeze",
-                  "Pattern-matched micro-moves for your specific loop type",
-                  "An 10-page fillable PDF + pocket cheat card",
-                  "Built on real ADHD research (behavioral activation, implementation intentions, cognitive reappraisal)",
-                ].map((item, idx) => (
-                  <li key={idx} className="text-sm text-foreground flex gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-secondary flex-shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* What it's NOT */}
-            <div className="space-y-4 p-6 rounded-xl bg-background border border-border/50">
-              <h3 className="font-bold text-foreground text-lg">What it's NOT:</h3>
-              <ul className="space-y-3">
-                {[
-                  "Another planner you'll abandon",
-                  "A complex system",
-                  "Motivational fluff",
-                ].map((item, idx) => (
-                  <li key={idx} className="text-sm text-muted-foreground flex gap-2">
-                    <span className="text-secondary font-bold">—</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-         <div className="space-y-4 pt-6 border-t border-border/30">
+          <div className="space-y-4 ">
             <button
               onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             >
               {primaryCTAText}
             </button>
@@ -287,69 +240,83 @@ const testimonials: Testimonial[] = [
               <span>Money-back guarantee</span>
             </div>
             <div className="text-center pt-2">
-              <p className="text-sm text-muted-foreground italic flex items-center justify-center gap-2 sm:flex-col">
+              <p className="text-sm text-muted-foreground italic flex flex-col items-center justify-center gap-2 sm:flex-row">
                 <span className="text-base"><StarRating rating={4.8} /></span>
                 <span>4.8/5 from 143 members who stopped overthinking</span>
               </p>
             </div>
           </div>
+
+          {/* What it is / What it's not side by side */}
+          
+         
         </div>
       </section>
-
       {/* ============ WHAT HAPPENS ============ */}
+          
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            What happens when you use it
-          </h2>
+            <div className="w-full max-w-2xl mx-auto space-y-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
+                What happens when you use it
+              </h2>
 
-          {/* Feature Grid */}
-          <div className="space-y-4">
-            {[
-              {
-                icon: Flame,
-                title: "Start even when stuck",
-                desc: "One messy move beats zero perfect plans",
-              },
-              {
-                icon: Brain,
-                title: "Shrink impossible tasks",
-                desc: 'Turn "write the email" into "write one sentence"',
-              },
-              {
-                icon: Zap,
-                title: "Shut down spirals fast",
-                desc: "Name the loop, shift in 5 minutes, lock it with one phrase",
-              },
-              {
-                icon: CheckCircle2,
-                title: "Get momentum without pressure",
-                desc: "Works even on your worst, most tired days",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="flex gap-4 p-5 rounded-lg bg-card border border-border/50 transition-all hover:border-secondary/30"
-              >
-                <item.icon className="h-6 w-6 text-secondary flex-shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="font-semibold text-foreground">{item.title}</p>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
+              {/* Feature Grid */}
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: Flame,
+                    title: "Start even when stuck",
+                    desc: "One messy move beats zero perfect plans",
+                  },
+                  {
+                    icon: Brain,
+                    title: "Shrink impossible tasks",
+                    desc: 'Turn "write the email" into "write one sentence"',
+                  },
+                  {
+                    icon: Zap,
+                    title: "Shut down spirals fast",
+                    desc: "Name the loop, shift in 5 minutes, lock it with one phrase",
+                  },
+                  {
+                    icon: CheckCircle2,
+                    title: "Get momentum without pressure",
+                    desc: "Works even on your worst, most tired days",
+                  },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex gap-4 p-5 rounded-lg bg-card border border-border/50 transition-all hover:border-secondary/30"
+                  >
+                    <item.icon className="h-6 w-6 text-secondary flex-shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <p className="font-semibold text-foreground">{item.title}</p>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <button
-              onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
-            >
-              {secondaryCTAText}
-          </button>
+              <button
+                  onClick={() => handleCTA("hero")}
+                  className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+                >
+                  {secondaryCTAText}
+              </button>
+            </div>
+      </section>
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
+            What ADHD overthinkers like you are saying
+          </h2>
+          <TestimonialCarousel testimonials={testimonials} />
         </div>
       </section>
 
       {/* ============ OBJECTION: OVERTHINK THE TOOLKIT ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <div className="space-y-3">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
@@ -387,7 +354,7 @@ const testimonials: Testimonial[] = [
           </div>
           <button
               onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             >
               {thirdCTAText}
           </button>
@@ -395,7 +362,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ WHAT'S INSIDE ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             What's inside
@@ -443,7 +410,7 @@ const testimonials: Testimonial[] = [
 
             {/* You'll get */}
             <div className="space-y-4 p-6 rounded-lg bg-primary/5 border border-primary/20">
-              <h3 className="font-semibold text-lg text-foreground">You'll get:</h3>
+              <h3 className="font-semibold text-lg text-foreground text-center md:text-left">You'll get:</h3>
               <ul className="space-y-3">
                 {[
                   "Your specific loop decoded + the exact move that breaks it",
@@ -469,7 +436,7 @@ const testimonials: Testimonial[] = [
             </div>
             <button
               onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             >
               {fourthCTAText}
           </button>
@@ -477,15 +444,6 @@ const testimonials: Testimonial[] = [
         </div>
       </section>
       
-      {/* ============ TESTIMONIALS ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            What ADHD overthinkers like you are saying
-          </h2>
-          <TestimonialCarousel testimonials={testimonials} />
-        </div>
-      </section>
                 
       {/* ============ PRICING TABLE ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
@@ -542,7 +500,7 @@ const testimonials: Testimonial[] = [
           </div>
           <button
               onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             >
               {sixthCTAText}
           </button>
@@ -552,7 +510,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ DOES IT ACTUALLY WORK ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             "Does it actually work?"
@@ -596,7 +554,7 @@ const testimonials: Testimonial[] = [
           </div>
           <button
               onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
             >
               {seventhCTAText}
           </button>
@@ -606,7 +564,7 @@ const testimonials: Testimonial[] = [
       {/* ============ ONE-TASK GUARANTEE ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
             One-task guarantee
           </h2>
 
@@ -615,7 +573,7 @@ const testimonials: Testimonial[] = [
               Use it on one stuck task tonight.
             </p>
             <p className="text-base text-foreground leading-relaxed">
-              If it doesn't help you start something—anything—just email us. We'll either:
+              If it doesn't help you start something - anything - just email us. We'll either:
             </p>
             <ul className="space-y-2 ml-4">
               <li className="text-base text-foreground flex gap-2">
@@ -635,7 +593,7 @@ const testimonials: Testimonial[] = [
 
           <button
             onClick={() => handleCTA("guarantee")}
-            className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
+            className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
             {primaryCTAText}
             {/* <ArrowRight className="h-5 w-5" /> */}
@@ -646,7 +604,7 @@ const testimonials: Testimonial[] = [
       {/* ============ FAQ ACCORDION ============ */}
       <section className="px-4 py-16 md:py-20 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
             Quick questions
           </h2>
 
@@ -698,20 +656,20 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="px-4 py-16 md:py-20 bg-background border-b border-border">
+      <section className="px-4 py-16 md:py-20 bg-background border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
               Download the 5-Minute Toolkit
             </h2>
             <p className="text-lg text-muted-foreground">
-              Use it on one task tonight—see how it works before deciding anything.
+              Use it on one task tonight - see how it works before deciding anything.
             </p>
           </div>
 
           <button
             onClick={() => handleCTA("final_cta")}
-            className="w-full px-8 py-6 rounded-lg bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
+            className="w-full px-8 py-6 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
             {eightCTAText}
             {/* <ArrowRight className="h-6 w-6" /> */}
