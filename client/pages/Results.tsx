@@ -448,7 +448,7 @@ const testimonials: Testimonial[] = [
       
                 
       {/* ============ DOES IT ACTUALLY WORK ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border text-center md:text-left">
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground">
             "Does it actually work?"
@@ -500,7 +500,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ ONE-TASK GUARANTEE ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
+      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
             One-task guarantee
@@ -540,7 +540,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ FAQ ACCORDION ============ */}
-      <section className="px-4 py-16 md:py-20 bg-card border-b border-border">
+      <section className="px-4 py-16 md:py-20 bg-background border-b border-border">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
             Quick questions
@@ -594,7 +594,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ FINAL CTA ============ */}
-      <section className="px-4 py-16 md:py-20 bg-background border-b border-border text-center md:text-left">
+      <section className="px-4 py-16 md:py-20 bg-card border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-8">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
