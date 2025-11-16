@@ -265,23 +265,23 @@ const testimonials: Testimonial[] = [
                 {[
                   {
                     icon: Flame,
-                    title: "Start even when stuck",
-                    desc: "One messy move beats zero perfect plans",
+                    title: "You start even when your brain screams “not now”",
+                    desc: "You have a 3-step script you can run in under 5 minutes when you’re frozen",
                   },
                   {
                     icon: Brain,
-                    title: "Shrink impossible tasks",
+                    title: "Big, vague tasks stop feeling impossible",
                     desc: 'Turn "write the email" into "write one sentence"',
                   },
                   {
                     icon: Zap,
-                    title: "Shut down spirals fast",
-                    desc: "Name the loop, shift in 5 minutes, lock it with one phrase",
+                    title: "Spirals get shorter and less violent",
+                    desc: "You can spot the loop, break it with a small action, and move on instead of losing hours",
                   },
                   {
                     icon: CheckCircle2,
-                    title: "Get momentum without pressure",
-                    desc: "Works even on your worst, most tired days",
+                    title: "You build momentum without bullying yourself",
+                    desc: "It’s designed to work on your most tired, shame-soaked days, not just on “good” days",
                   },
                 ].map((item, idx) => (
                   <div
@@ -338,12 +338,12 @@ const testimonials: Testimonial[] = [
                 desc: "Open PDF → Use tonight",
               },
               {
-                label: "Pattern-specific actions",
-                desc: "You don't choose—we match the move to your loop type",
+                label: "Works for all 4 overthinking loops",
+                desc: "The guide gives ready 5-minute moves for each loop type, so you can just plug into the one that fits right now",
               },
               {
                 label: "Cheat card included",
-                desc: "Screenshot it. Use it when frozen. That's it.",
+                desc: "You get a one-page quick reference you can screenshot and keep on your phone",
               },
             ].map((item, idx) => (
               <div key={idx} className="space-y-2 p-5 rounded-lg bg-background border border-border/50">
@@ -372,7 +372,7 @@ const testimonials: Testimonial[] = [
             {/* Intro */}
             <div className="space-y-3 p-6 rounded-lg bg-card border border-border/50">
               <p className="font-semibold text-lg text-foreground">
-                A 3-step system that breaks your specific overthinking pattern:
+                A simple 3-step system that breaks your overthinking loop in under 5 minutes:
               </p>
             </div>
 
@@ -413,9 +413,11 @@ const testimonials: Testimonial[] = [
               <h3 className="font-semibold text-lg text-foreground text-center md:text-left">You'll get:</h3>
               <ul className="space-y-3">
                 {[
-                  "Your specific loop decoded + the exact move that breaks it",
-                  "Pocket cheat card (screenshot when frozen)",
-                  "The science behind why this works for ADHD brains",
+                  "The 3-step Loop Breaker, so you always know what to do first when you freeze",
+                  "A simple 4-loop guide, so you can tell which pattern you’re in right now without overthinking it",
+                  "Your 5-Minute Rescue Map, so future-you doesn’t have to invent tiny steps while panicking",
+                  "A one-page cheat card, so you can screenshot it and follow it when your brain is offline",
+                  "A plain-language science explainer, so your brain actually trusts the tool enough to try it",
                 ].map((item, idx) => (
                   <li key={idx} className="text-sm text-foreground flex gap-2">
                     <span className="text-secondary font-bold">✓</span>
@@ -428,7 +430,7 @@ const testimonials: Testimonial[] = [
             {/* No fluff callout */}
             <div className="space-y-3 p-6 rounded-lg bg-card border-2 border-secondary/20">
               <p className="font-semibold text-foreground text-lg">
-                No fluff. No theory. Just:
+                No 40-page textbook. No “optimize your life” bullshit. Just:
               </p>
               <p className="text-base text-muted-foreground">
                 "I'm stuck" → do this → unstuck.
@@ -445,70 +447,6 @@ const testimonials: Testimonial[] = [
       </section>
       
                 
-      {/* ============ PRICING TABLE ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
-        <div className="w-full max-w-2xl mx-auto space-y-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            What you're getting
-          </h2>
-
-          {/* Pricing Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className=" whitespace-nowrap text-left py-3 px-4 font-semibold text-foreground text-sm md:text-base">
-                    Item
-                  </th>
-                  <th className="whitespace-nowrap text-right py-3 px-4 font-semibold text-foreground text-sm md:text-base">
-                    Value
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { label: "Stop Overthinking Toolkit (10-page PDF)", value: "$19" },
-                  { label: "Pattern Finder Guide", value: "$9" },
-                  { label: "Pocket Cheat Card", value: "$7" },
-                  { label: "Action Formula Templates", value: "$11" },
-                ].map((item, idx) => (
-                  <tr key={idx} className="border-b border-border/50">
-                    <td className="py-3 px-4 text-foreground text-sm md:text-base">{item.label}</td>
-                    <td className="whitespace-nowrap py-3 px-4 text-right text-foreground font-semibold text-sm md:text-base">
-                      {item.value}
-                    </td>
-                  </tr>
-                ))}
-                <tr className="bg-secondary/10">
-                  <td className="py-3 px-4 font-semibold text-foreground text-sm md:text-base">
-                    Bundle Value
-                  </td>
-                  <td className="py-3 px-4 text-right font-bold text-secondary text-sm md:text-base">
-                    $46
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-4 font-bold text-foreground text-lg md:text-xl">
-                    Your Price Today
-                  </td>
-                  <td className="whitespace-nowrap py-4 px-4 text-right font-bold text-secondary text-2xl md:text-3xl">
-                    ${launchPrice}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button
-              onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
-            >
-              {sixthCTAText}
-          </button>
-          {/* Pricing Info */}
-
-        </div>
-      </section>
-
       {/* ============ DOES IT ACTUALLY WORK ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-10">
@@ -535,7 +473,7 @@ const testimonials: Testimonial[] = [
               },
               {
                 title: "Action Priming",
-                desc: 'Micro-movement "primes" larger action',
+                desc: 'One small move makes the next move easier',
               },
             ].map((item, idx) => (
               <div key={idx} className="p-4 rounded-lg bg-background border border-border/50">
@@ -595,7 +533,7 @@ const testimonials: Testimonial[] = [
             onClick={() => handleCTA("guarantee")}
             className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2"
           >
-            {primaryCTAText}
+            {secondaryCTAText}
             {/* <ArrowRight className="h-5 w-5" /> */}
           </button>
         </div>
@@ -679,15 +617,13 @@ const testimonials: Testimonial[] = [
           <div className="flex items-center justify-center gap-4 text-xs font-semibold text-muted-foreground flex-wrap">
             <div className="flex items-center gap-1">
               <Zap className="h-3.5 w-3.5 text-secondary" />
-              10-page PDF
+              Use it tonight
             </div>
             <span>•</span>
             <div className="flex items-center gap-1">
               <CheckCircle2 className="h-3.5 w-3.5 text-secondary" />
               Instant download
             </div>
-            <span>•</span>
-            <span>Use it tonight</span>
           </div>
         </div>
       </section>

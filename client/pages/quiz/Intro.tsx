@@ -30,7 +30,6 @@ export const IntroScreen: React.FC = () => {
       </div>
       <div className="w-full max-w-md space-y-8 text-center">
         {/* Icon */}
-        <img className="mx-auto w-full max-w-[240px] h-auto object-contain" loading="eager" decoding="async" src="/starting_image.webp" alt="Character" />
 
         {/* Heading */}
         <div className="space-y-4">
