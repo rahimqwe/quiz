@@ -183,15 +183,22 @@ const testimonials: Testimonial[] = [
       {/* ============ YOUR PATTERN ============ */}
       <section className="px-4 py-8 sm:py-10 md:py-12 bg-background border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             You're Stuck in the{" "}
             <span className="text-secondary">{currentOutcome.loopName}</span>
           </h2>
           
-          <p className="text-base leading-relaxed text-foreground">
+          <p className="text-base leading-relaxed text-foreground whitespace-pre-wrap">
             {currentOutcome.description}
           </p>
-          
+            {/* <a
+              href="#offer"
+              // Если нужно отслеживать клик для аналитики, оставь onClick, если нет — можно убрать
+              // onClick={() => handleCTA("hero")} 
+              className="w-full block text-center px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 no-underline cursor-pointer"
+            >
+              SEE THE SOLUTION
+            </a> */}
         
           
           {/* <div className="pt-4 border-t border-border">
@@ -202,10 +209,10 @@ const testimonials: Testimonial[] = [
         </div>
       </section>  
       {/* ============ OFFER ============ */}
-      <section className="px-4 py-8 sm:py-10 md:py-12 bg-card border-b border-border text-center md:text-left">
+      <section className="px-4 pt-8 sm:pt-10 md:pt-12 pt-b sm:pb-6 md:pb-8 bg-card border-b border-border text-center md:text-left">
         <div className="w-full max-w-2xl mx-auto space-y-8 md:space-y-12">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <div id="offer" className="space-y-4">
+            <h2  className="text-3xl md:text-4xl font-bold text-foreground">
               There's a way out - and it takes only 5 minutes
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -219,7 +226,7 @@ const testimonials: Testimonial[] = [
             alt="Stop Overthinking Toolkit"
             className="mx-auto h-64 w-auto object-contain "
           />
-          <div className="space-y-4 ">
+          {/* <div className="space-y-4 ">
             <button
               onClick={() => handleCTA("hero")}
               className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
@@ -245,65 +252,116 @@ const testimonials: Testimonial[] = [
                 <span>4.8/5 from 143 members who stopped overthinking</span>
               </p>
             </div>
-          </div>
+          </div> */}
 
-          {/* What it is / What it's not side by side */}
           
          
         </div>
       </section>
+            <section className="px-4 py-10 sm:py-10 md:py-14 bg-card border-b border-border text-center md:text-left">
+        <div className="w-full max-w-2xl mx-auto space-y-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+            What's inside
+          </h2>
+
+          <div className="space-y-6">
+            {/* Intro */}
+            {/* <div className="space-y-3 p-6 rounded-lg bg-card border border-border/50">
+              <p className="font-semibold text-lg text-foreground">
+                A simple 3-step system that breaks your overthinking loop in under 5 minutes:
+              </p>
+            </div> */}
+
+            {/* The 3-Step Framework */}
+            {/* <div className="grid md:grid-cols-3 gap-4">
+              {[
+                {
+                  number: "1",
+                  step: "NAME IT",
+                  desc: "Identify your freeze (takes 30 seconds)",
+                },
+                {
+                  number: "2",
+                  step: "SHIFT IT",
+                  desc: "One pattern-matched 5-minute move",
+                },
+                {
+                  number: "3",
+                  step: "LOCK IT",
+                  desc: "Brain-reset phrase that makes it stick",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-lg bg-card border-2 border-secondary/20 hover:border-secondary/40 transition-colors space-y-2"
+                >
+                  <div className="text-3xl font-bold text-secondary">
+                    {item.number}
+                  </div>
+                  <p className="font-bold text-foreground">{item.step}</p>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div> */}
+
+            {/* You'll get */}
+           <div className="space-y-4 p-6 rounded-lg bg-primary/5 border border-primary/20 text-left ">
+            <ul className="space-y-4">
+              {[
+                {
+                  title: "3-Question Circuit Breaker (5 min)",
+                  desc: "A reset that breaks the spiral and gets you into a safe first step - even when you feel frozen."
+                },
+                {
+                  title: "4 Pattern-Specific Action Guides",
+                  desc: "Pick your loop → follow the script. Turns “impossible tasks” into simple next actions."
+                },
+                {
+                  title: "Emergency Cheat Sheet (1 page)",
+                  desc: "Screenshot it. Pull it up the moment you freeze and need a backup brain."
+                },
+                {
+                  title: "Quick “Why You Freeze” Explainer",
+                  desc: "A short, non-medical breakdown so the guilt drops and you stop calling it laziness."
+                }
+              ].map((item, idx) => (
+                <li key={idx} className="text-sm text-foreground flex gap-3 items-start">
+                  {/* Иконка галочки, чуть спущена вниз (mt-1) для выравнивания с первой строкой */}
+                  <span className="text-secondary font-bold text-lg leading-none mt-0.5">✓</span>
+                  
+                  {/* Контейнер для текста: Заголовок сверху, описание снизу */}
+                  <div className="flex flex-col gap-1">
+                    <span className="font-bold text-base">{item.title}</span>
+                    <span className="text-muted-foreground leading-relaxed">
+                      {item.desc}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+            {/* No fluff callout */}
+            <div className="space-y-3 p-6 rounded-lg bg-card border-2 border-secondary/20">
+              <p className="font-semibold text-foreground text-lg">
+                No 40-page textbook. No “optimize your life” bullshit. Just:
+              </p>
+              <p className="text-base text-muted-foreground">
+                "I'm stuck" → do this → unstuck.
+              </p>
+            </div>
+            <button
+              onClick={() => handleCTA("hero")}
+              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
+            >
+              {primaryCTAText}
+          </button>
+          </div>
+        </div>
+      </section>
       {/* ============ WHAT HAPPENS ============ */}
           
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-background border-b border-border">
-            <div className="w-full max-w-2xl mx-auto space-y-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground text-center md:text-left">
-                What happens when you use it
-              </h2>
-
-              {/* Feature Grid */}
-              <div className="space-y-4">
-                {[
-                  {
-                    icon: Flame,
-                    title: "You start even when your brain screams “not now”",
-                    desc: "You have a 3-step script you can run in under 5 minutes when you’re frozen",
-                  },
-                  {
-                    icon: Brain,
-                    title: "Big, vague tasks stop feeling impossible",
-                    desc: 'Turn "write the email" into "write one sentence"',
-                  },
-                  {
-                    icon: Zap,
-                    title: "Spirals get shorter and less violent",
-                    desc: "You can spot the loop, break it with a small action, and move on instead of losing hours",
-                  },
-                  {
-                    icon: CheckCircle2,
-                    title: "You build momentum without bullying yourself",
-                    desc: "It’s designed to work on your most tired, shame-soaked days, not just on “good” days",
-                  },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex gap-4 p-5 rounded-lg bg-card border border-border/50 transition-all hover:border-secondary/30"
-                  >
-                    <item.icon className="h-6 w-6 text-secondary flex-shrink-0 mt-0.5" />
-                    <div className="space-y-1">
-                      <p className="font-semibold text-foreground">{item.title}</p>
-                      <p className="text-sm text-muted-foreground">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <button
-                  onClick={() => handleCTA("hero")}
-                  className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
-                >
-                  {secondaryCTAText}
-              </button>
-            </div>
-      </section>
+      
 
       {/* ============ TESTIMONIALS ============ */}
       <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border">
@@ -362,89 +420,7 @@ const testimonials: Testimonial[] = [
       </section>
 
       {/* ============ WHAT'S INSIDE ============ */}
-      <section className="px-4 py-10 sm:py-12 md:py-20 bg-card border-b border-border text-center md:text-left">
-        <div className="w-full max-w-2xl mx-auto space-y-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-            What's inside
-          </h2>
 
-          <div className="space-y-6">
-            {/* Intro */}
-            <div className="space-y-3 p-6 rounded-lg bg-card border border-border/50">
-              <p className="font-semibold text-lg text-foreground">
-                A simple 3-step system that breaks your overthinking loop in under 5 minutes:
-              </p>
-            </div>
-
-            {/* The 3-Step Framework */}
-            <div className="grid md:grid-cols-3 gap-4">
-              {[
-                {
-                  number: "1",
-                  step: "NAME IT",
-                  desc: "Identify your freeze (takes 30 seconds)",
-                },
-                {
-                  number: "2",
-                  step: "SHIFT IT",
-                  desc: "One pattern-matched 5-minute move",
-                },
-                {
-                  number: "3",
-                  step: "LOCK IT",
-                  desc: "Brain-reset phrase that makes it stick",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="p-5 rounded-lg bg-card border-2 border-secondary/20 hover:border-secondary/40 transition-colors space-y-2"
-                >
-                  <div className="text-3xl font-bold text-secondary">
-                    {item.number}
-                  </div>
-                  <p className="font-bold text-foreground">{item.step}</p>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* You'll get */}
-            <div className="space-y-4 p-6 rounded-lg bg-primary/5 border border-primary/20">
-              <h3 className="font-semibold text-lg text-foreground text-center md:text-left">You'll get:</h3>
-              <ul className="space-y-3">
-                {[
-                  "The 3-step Loop Breaker, so you always know what to do first when you freeze",
-                  "A simple 4-loop guide, so you can tell which pattern you’re in right now without overthinking it",
-                  "Your 5-Minute Rescue Map, so future-you doesn’t have to invent tiny steps while panicking",
-                  "A one-page cheat card, so you can screenshot it and follow it when your brain is offline",
-                  "A plain-language science explainer, so your brain actually trusts the tool enough to try it",
-                ].map((item, idx) => (
-                  <li key={idx} className="text-sm text-foreground flex gap-2">
-                    <span className="text-secondary font-bold">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* No fluff callout */}
-            <div className="space-y-3 p-6 rounded-lg bg-card border-2 border-secondary/20">
-              <p className="font-semibold text-foreground text-lg">
-                No 40-page textbook. No “optimize your life” bullshit. Just:
-              </p>
-              <p className="text-base text-muted-foreground">
-                "I'm stuck" → do this → unstuck.
-              </p>
-            </div>
-            <button
-              onClick={() => handleCTA("hero")}
-              className="w-full px-6 py-4 rounded-[9999px] bg-gradient-to-r from-secondary to-secondary/80 text-secondary-foreground font-bold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
-            >
-              {fourthCTAText}
-          </button>
-          </div>
-        </div>
-      </section>
       
                 
       {/* ============ DOES IT ACTUALLY WORK ============ */}

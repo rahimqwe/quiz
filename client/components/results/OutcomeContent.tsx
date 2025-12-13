@@ -9,26 +9,38 @@ export interface OutcomeContent {
 export const getOutcomeContent: Record<OutcomeType, OutcomeContent> = {
   A: {
     loopName: "Perfect Plan Trap",
-    description: "You feel like you can't begin until you know *exactly* how it will go",
-   
-    // bridge: "There’s a way out of the Perfect Plan Trap - and it only takes 5 minutes",
+    description: `You can’t start until you’ve found the “right” way - so you keep planning and still don’t begin.
+
+Your brain treats “starting wrong” as danger, so it demands certainty first.
+
+For this pattern, complex systems are just another place to hide.`
+
   },
   B: {
     loopName: "Research Spiral",
-    description: "You get trapped in reading, watching, or scrolling before you act",
-    
-    // bridge: "There’s a way out of the Research Spiral - and it only takes 5 minutes",
+    description: `You keep watching videos and collecting info instead of starting.
+
+Why? Learning gives dopamine without the stress of doing. “One more tip” feels safer than the first step.
+
+For this pattern, research isn’t preparation - it’s avoidance.`
+
   },
   C: {
     loopName: "Social Panic Loop",
-    description: "Your brain replays how you'll be seen, judged, or rejected if you get it wrong",
-    
-    // bridge: "There’s a way out of the Social Panic Loop - and it only takes 5 minutes",
+    description: `You rewrite texts and emails over and over - or don’t send them at all.
+
+You’re scared of saying the wrong thing and being judged, so your brain keeps you rehearsing until you’re exhausted.
+
+For this pattern, more time doesn’t help - it makes it heavier.`
+
   },
   D: {
     loopName: "Options Freeze",
-    description: "You see too many choices and your brain can't commit to one",
-    
-    // bridge: "There’s a way out of the Options Freeze - and it only takes 5 minutes",
+    description: `Too many choices and you pick none - even with simple stuff like what to eat or which task to start.
+
+Your brain can’t filter “important” from “unimportant,” so every choice feels high-stakes.
+
+You don’t need better decision tools - you need fewer decisions.`
+
   },
 };
